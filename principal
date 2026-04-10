@@ -29,3 +29,28 @@ df["Credito"] = le_target.fit_transform(df["Credito"])
 
 X = df[["Renda", "Historico", "Dividas", "TempoEmprego"]]
 y = df["Credito"]
+
+# 3. Treinamento (ID3 - Entropia)
+clf = DecisionTreeClassifier(criterion="entropy")
+clf.fit(X, y)
+
+# --- TESTE ---
+print("--- Simulador de Crédito ---")
+
+# Exemplo: Média renda, histórico ruim, com dívidas, emprego curto
+nova_entrada = [[
+    le_renda.transform(["Media"])[0],
+    le_hist.transform(["Ruim"])[0],
+    le_div.transform(["Sim"])[0],
+    le_temp.transform(["Curto"])[0]
+]]
+
+predicao = clf.predict(nova_entrada)
+resultado = le_target.inverse_transform(predicao)
+
+print(f"Resultado da análise de crédito: {resultado[0]}")
+
+# Importância das variáveis
+print("\nImportância das variáveis:")
+for nome, importancia in zip(X.columns, clf.feature_importances_):
+    print(f"{nome}: {importancia:.3f}")
