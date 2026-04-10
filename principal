@@ -13,3 +13,19 @@ data = {
 }
 
 df = pd.DataFrame(data)
+
+# 2. Codificação
+le_renda = LabelEncoder()
+le_hist = LabelEncoder()
+le_div = LabelEncoder()
+le_temp = LabelEncoder()
+le_target = LabelEncoder()
+
+df["Renda"] = le_renda.fit_transform(df["Renda"])
+df["Historico"] = le_hist.fit_transform(df["Historico"])
+df["Dividas"] = le_div.fit_transform(df["Dividas"])
+df["TempoEmprego"] = le_temp.fit_transform(df["TempoEmprego"])
+df["Credito"] = le_target.fit_transform(df["Credito"])
+
+X = df[["Renda", "Historico", "Dividas", "TempoEmprego"]]
+y = df["Credito"]
