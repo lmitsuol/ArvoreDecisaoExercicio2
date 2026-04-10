@@ -54,3 +54,12 @@ print(f"Resultado da análise de crédito: {resultado[0]}")
 print("\nImportância das variáveis:")
 for nome, importancia in zip(X.columns, clf.feature_importances_):
     print(f"{nome}: {importancia:.3f}")
+
+# 4. Visualização
+plot_tree(
+    clf,
+    feature_names=X.columns,
+    class_names=["Negado", "Aprovado"],
+    filled=True,
+)
+plt.show()
