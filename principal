@@ -1,0 +1,15 @@
+import pandas as pd
+from sklearn.tree import DecisionTreeClassifier, plot_tree
+from sklearn.preprocessing import LabelEncoder
+import matplotlib.pyplot as plt
+
+# 1. Dados de Treinamento
+data = {
+    "Renda": ["Alta", "Alta", "Media", "Baixa", "Media", "Baixa", "Alta", "Media"],
+    "Historico": ["Bom", "Ruim", "Bom", "Bom", "Ruim", "Ruim", "Bom", "Ruim"],
+    "Dividas": ["Não", "Sim", "Não", "Sim", "Sim", "Sim", "Não", "Não"],
+    "TempoEmprego": ["Longo", "Curto", "Longo", "Curto", "Curto", "Longo", "Longo", "Curto"],
+    "Credito": ["Aprovado", "Negado", "Aprovado", "Negado", "Negado", "Negado", "Aprovado", "Negado"],
+}
+
+df = pd.DataFrame(data)
